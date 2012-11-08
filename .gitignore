@@ -1,0 +1,8 @@
+static/
+!*/static/
+*.db
+*.pyc
+.svn/
+media/
+settings_local.py
+.sass-cache/
