@@ -14,105 +14,64 @@
 
     <!-- Included CSS Files -->
     <link rel="stylesheet" href="{% static 'stylesheets/app.css' %}">
-
+    
     <script src="{% static 'javascripts/foundation/modernizr.foundation.js' %}"></script>
 
 </head>
 <body>
+    <nav class="top-bar">
+      <ul>
+        <li class="name"><h1><a href="#">skifflog</a></h1></li>
+        <li class="toggle-topbar"><a href="#"></a></li>
+      </ul>
+      <section>
+        <ul class="left">
+          <li><a href="#">Link</a></li>
+
+          <li class="has-dropdown">
+            <a href="#">Link</a>
+
+            <ul class="dropdown">
+              <li><a href="#">Dropdown Link</a></li>
+            </ul>
+
+          </li>
+
+        </ul>
+
+        <ul class="right">
+
+          <li class="active"><a href="#">Link</a></li>
+          <li class="divider"></li>
+
+
+          <li class="has-button">
+            <a class="small button" href="#">Button!</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
 
     <div class="row">
         <div class="twelve columns">
-            <h2>Welcome to Foundation</h2>
-            <p>This is version 3.2.0.</p>
-            <hr />
+            <h1>Hello.</h1>
+            <p>I find it confusing to track the time I spend at The Skiff and
+                also have space in my head for projects.</p>
+            <p>So I've built a time logging system that allows you to select
+                your plan, and will warn you when you are nearing going
+                over your allotted time.</p>
+            <p>You can choose how to split your days up (twelve hours, six hours)
+                and have your time rounded up to this depending on how you feel
+                hours should be allotted.</p>
+            <a href="#" class="button" data-reveal-id="myModal">Click Me For A Modal</a>
         </div>
     </div>
-
-    <div class="row">
-        <div class="eight columns">
-            <h3>The Grid</h3>
-
-            <!-- Grid Example -->
-            <div class="row">
-                <div class="twelve columns">
-                    <div class="panel">
-                        <p>This is a twelve column section in a row. Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="six columns">
-                    <div class="panel">
-                        <p>Six columns</p>
-                    </div>
-                </div>
-                <div class="six columns">
-                    <div class="panel">
-                        <p>Six columns</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="four columns">
-                    <div class="panel">
-                        <p>Four columns</p>
-                    </div>
-                </div>
-                <div class="four columns">
-                    <div class="panel">
-                        <p>Four columns</p>
-                    </div>
-                </div>
-                <div class="four columns">
-                    <div class="panel">
-                        <p>Four columns</p>
-                    </div>
-                </div>
-            </div>
-
-            <h3>Tabs</h3>
-            <dl class="tabs">
-                <dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
-                <dd><a href="#simple2">Simple Tab 2</a></dd>
-                <dd><a href="#simple3">Simple Tab 3</a></dd>
-            </dl>
-
-            <ul class="tabs-content">
-                <li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-                <li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
-                <li id="simple3Tab">This is simple tab 3's content. It's, you know...okay.</li>
-            </ul>
-
-            <h3>Buttons</h3>
-
-      <div class="row">
-        <div class="six columns">
-          <p><a href="#" class="small button">Small Button</a></p>
-          <p><a href="#" class="button">Medium Button</a></p>
-          <p><a href="#" class="large button">Large Button</a></p>
-        </div>
-        <div class="six columns">
-          <p><a href="#" class="small alert button">Small Alert Button</a></p>
-          <p><a href="#" class="success button">Medium Success Button</a></p>
-          <p><a href="#" class="large secondary button">Large Secondary Button</a></p>
-        </div>
-      </div>
-        </div>
-
-        <div class="four columns">
-            <h4>Getting Started</h4>
-            <p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-
-            <h4>Other Resources</h4>
-            <p>Once you've exhausted the fun in this document, you should check out:</p>
-            <ul class="disc">
-                <li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
-                <li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
-                <li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
-            </ul>
-        </div>
+    <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+      <h2>Awesome. I have it.</h2>
+      <p class="lead">Your couch.  It is mine.</p>
+      <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+      <a class="close-reveal-modal">&#215;</a>
     </div>
-
     <!-- Included JS Files (Uncompressed) -->
     <script src="{% static 'javascripts/jquery.js' %}"></script>
     <script data-main="{% static 'javascripts/main.js' %}"
