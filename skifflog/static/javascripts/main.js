@@ -81,7 +81,6 @@ requirejs.config({
                 'foundation/jquery.foundation.topbar',
                 'foundation/jquery.offcanvas',
                 'foundation/jquery.placeholder',
-                'foundation/modernizr.foundation',
             ]
         }
     }
@@ -106,7 +105,6 @@ require([ 'jquery'
         , 'foundation/jquery.foundation.topbar'
         , 'foundation/jquery.offcanvas'
         , 'foundation/jquery.placeholder'
-        , 'foundation/modernizr.foundation'
         , 'foundation/app'
         ], function($) {
 

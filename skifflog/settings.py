@@ -77,8 +77,22 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+STATICFILES_STORAGE = 'require.storage.OptimizedStaticFilesStorage'
+
+REQUIRE_BASE_URL = "javascripts"
+REQUIRE_JS = "require.js"
+REQUIRE_DEBUG = settings.DEBUG
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '8g3%2m46_&amp;xv=r)a1)1jxjwo98ln%641fabi6_s!e8$d&amp;%8df4'
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -97,6 +111,13 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+    "django.contrib.auth.context_processors.auth",
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+)
+
 ROOT_URLCONF = 'skifflog.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -111,6 +132,12 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'skifflog',
     'rest_framework',
+    'require',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.persona',
+    'django_extensions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -118,7 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
