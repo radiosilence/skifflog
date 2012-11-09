@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Dashboard</h1>
-<p>This is the logged in user dashboard.</p>
+    <h1>Dashboard</h1>
+    <p>This is the logged in user dashboard.</p>
+    {% if user.auth_token %}
+        <h2>API Token</h2>
+        <p>See <a href="http://django-rest-framework.org/api-guide/authentication.html#tokenauthentication">here</a> for more details.</p> 
+        <p>Token: <code>{{ user.auth_token.key }}</code></p>
+    {% endif %}
+    
+    <table>
+        <thead>
+            <th>Start</th>
+            <th>Duration</th>
+        </thead>
+        <tbody>
+            {% for block in blocks_this_month %}
+            <tr>
+                <td>{{ block.start }}</td>
+                <td>{{ block.duration }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

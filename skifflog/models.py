@@ -6,3 +6,4 @@ class Block(models.Model):
     user = models.ForeignKey(User, related_name='blocks')
     start = models.DateTimeField()
     duration = timedelta.fields.TimedeltaField()
+    comment = models.TextField(blank=True, null=True)

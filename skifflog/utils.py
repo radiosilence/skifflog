@@ -5,7 +5,7 @@ def month_range(today=None):
     if not today:
         today = datetime.date.today()
     begin = datetime.date(year=today.year, month=today.month, day=1)
-    _, days = calendar.monthrange(year, month)
+    _, days = calendar.monthrange(today.year, today.month)
     delta = datetime.timedelta(days=days)
     return begin, begin + delta
 

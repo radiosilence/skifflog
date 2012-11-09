@@ -99,7 +99,6 @@ SECRET_KEY = '8g3%2m46_&amp;xv=r)a1)1jxjwo98ln%641fabi6_s!e8$d&amp;%8df4'
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
-
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
@@ -142,11 +141,13 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'skifflog',
     'rest_framework',
+    'rest_framework.authtoken',
     'require',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.persona',
+    'south',
     'django_extensions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -196,5 +197,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.XMLRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     )
 }
