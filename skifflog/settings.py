@@ -77,7 +77,7 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-STATICFILES_STORAGE = 'require.storage.OptimizedStaticFilesStorage'
+STATICFILES_STORAGE = 'require.storage.OptimizedCachedStaticFilesStorage'
 
 REQUIRE_BASE_URL = "javascripts"
 REQUIRE_BUILD_PROFILE = None
