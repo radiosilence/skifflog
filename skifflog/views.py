@@ -105,7 +105,10 @@ def dashboard(request):
     blocks = profile.month_blocks.order_by('-start')
     month_total = profile.used_time
     max_use = profile.max_use
-    month_percentage = use_percentage(month_total, max_use)
+    if max_use > datetime.timedelta(0):
+        month_percentage = use_percentage(month_total, max_use)
+    else:
+        month_percentage = None
     serializer = BlockSerializer(blocks)
     context = {
         'max_use': max_use,

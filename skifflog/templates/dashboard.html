@@ -24,8 +24,15 @@
             {% else %}
                 <h1>Dashboard</h1>
             {% endif %}
-            <p>You have used <strong>{{ month.total }}</strong> of <strong>{{ max_use }}</strong> this month</p>
-            <p><div class="progress twelve"><span class="meter" style="width: {{ month.percentage }}%"></span></div></p>
+            {% if month.percentage %}
+                <p>You have used <strong>{{ month.total }}</strong> of <strong>{{ max_use }}</strong> this month.</p>
+                <p><div class="progress{% if month.percentage < 25 %} success{% elif month.percentage > 75 %} alert{% endif %} twelve"><span class="meter" style="width: {{ month.percentage }}%"></span></div></p>
+            {% else %}
+                <p>You are on an unlimited plan and thus do not need to concern
+                    yourself with such worldly things as usage percentage.</p>
+                <p>Though, it might be nice to know that you have been at The Skiff
+                    for <strong>{{ month.total }}</strong> this month.</p>
+            {% endif %}
             <h2>Log</h2>
             <table style="width: 100%">
                 <thead>

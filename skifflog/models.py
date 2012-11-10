@@ -28,7 +28,7 @@ class UserProfile(models.Model):
         default=PLANS.mates,
         verbose_name='Which type of mate you are (affects total time)'
     )
-    round_up = models.FloatField(null=True, blank=True,
+    round_up = models.FloatField(default=24.0,
         verbose_name='How much you want to round up time, contributed to total, so'
             + ' as not to take the metaphorical piss (in hours)')
     current_visit = models.DateTimeField(null=True, blank=True)

@@ -116,5 +116,6 @@ require([ 'jquery'
             $('#timer'),
             $('#comment')
         );
+        $('ul.errorlist li').addClass('alert label');
     });
 });
