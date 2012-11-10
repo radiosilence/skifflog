@@ -57,7 +57,7 @@ class UserProfile(models.Model):
                 floor = datetime.timedelta(hours=self.round_up)
             else:
                 floor = datetime.timedelta(0)
-            if delta < floor:
+            if delta < floor and delta > datetime.timedelta(0):
                 return floor
             else:
                 return delta
