@@ -99,6 +99,9 @@ def check(request):
 @login_required
 def dashboard(request):
     profile = request.user.profile
+    profile_form = UserProfileForm(request.DATA, instance=profile)
+    if profile_form.is_valid():
+        profile_form.save()
     blocks = profile.month_blocks.order_by('-start')
     month_total = profile.used_time
     max_use = profile.max_use
@@ -112,6 +115,6 @@ def dashboard(request):
             'percentage': month_percentage,
         },
         'visit': profile.current_visit,
-        'profile_form': UserProfileForm(request.DATA, instance=profile)
+        'profile_form': profile_form
     }
     return Response(context, template_name='dashboard.html')
