@@ -24,7 +24,7 @@
             {% else %}
                 <h1>Dashboard</h1>
             {% endif %}
-            {% if month.percentage %}
+            {% if month.percentage >= 0 %}
                 <p>You have used <strong>{{ month.total }}</strong> (adjusted) of <strong>{{ max_use }}</strong> this month.</p>
                 <p><div class="progress{% if month.percentage < 25 %} success{% elif month.percentage > 75 %} alert{% endif %} twelve"><span class="meter" style="width: {{ month.percentage }}%"></span></div></p>
             {% else %}
