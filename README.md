@@ -12,6 +12,13 @@ able to log multiple entries in a day and have that count as a single day.
 
 Logins are done via Mozilla Persona, as per the who.theskiff.org site.
 
+Time is saved between sessions, so if you close your browser or reboot,
+the site assumes you are still active.
+
+In future there will be the ability to delete or amend time slots in the case
+of forgetting to "sign out".
+
+
 Screenshot
 ----------
 ![Dashboard](http://files.blackflags.co.uk/screenshots/skifflog-dashboard.png)

@@ -4,12 +4,21 @@
         <div class="twelve columns">
             <h1>Keeping track of time is annoying.</h1>
             <p>And time flies when you're having fun at The Skiff!</p>
-            <p>So I've built a time logging system that allows you to select
-                your plan, and will warn you when you are nearing going
-                over your allotted time.</p>
-            <p>You can choose how to split your days up (twelve hours, six hours)
-                and have your time rounded up to this depending on how you feel
-                hours should be allotted.</p>
+
+            <p>For mates with limited plans, there's a function to round their logs "up"
+            within a day, in order to spread hours a little more generously. However,
+            the default rounding is set to 24 hours to represent that a day is a day.</p>
+
+            <p>Because the rounding only affects the total time spent within a day, one is
+            able to log multiple entries in a day and have that count as a single day.</p>
+
+            <p>Logins are handled via Mozilla Persona, as per the who.theskiff.org site.</p>
+
+            <p>Time is saved between sessions, so if you close your browser or reboot,
+            the site assumes you are still active.</p>
+
+            <p>In future there will be the ability to delete or amend time slots in the case
+            of forgetting to "sign out".</p>
         </div>
     </div>
 {% endblock %}
