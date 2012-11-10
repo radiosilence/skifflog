@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    {% csrf_token %}
     <div class="row">
         <div class="three columns panel">
             {% if visit %}
                 <p>
-                    <a class="button large alert" href="javascript:void(0)">I'm leaving now</a>
+                    <a class="button large alert" id="depart" href="javascript:void(0)">I'm leaving now</a>
                 </p>
-                <label for="id_comment">Comment
+                <label for="comment">Comment
                 </label>
-                <textarea id="id_comment"></textarea>
+                <textarea id="comment"></textarea>
                 <div class="">You are currently at The Skiff, and have
-                    been since {{ visit.start }}
+                    been since {{ visit }}
                 </div>
 
             {% else %}
-                <a class="button large success" href="javascript:void(0)">I'm at The Skiff!</a>
+                <a class="button large success" id="arrive" href="javascript:void(0)">I'm at The Skiff!</a>
             {% endif %}
         </div>
         <div class="nine columns">
             {% if visit %}
-                <h1 class="visit" start="{{ visit.start }}">--:--:--</h1>
+                <h1 class="visit" id="timer" start="{{ visit }}">--:--:--</h1>
             {% else %}
                 <h1>Dashboard</h1>
             {% endif %}

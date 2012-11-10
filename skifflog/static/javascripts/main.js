@@ -86,6 +86,7 @@ requirejs.config({
     }
 });
 require([ 'jquery'
+        , 'skifflog'
         , 'foundation/jquery.cookie'
         , 'foundation/jquery.event.move'
         , 'foundation/jquery.event.swipe'
@@ -106,9 +107,14 @@ require([ 'jquery'
         , 'foundation/jquery.offcanvas'
         , 'foundation/jquery.placeholder'
         , 'foundation/app'
-        ], function($) {
-
-    $(document).ready(function() {
-        console.log("PARP");
-  });
-})
+        ], function($, skifflog) {
+    $(function() {
+        skifflog(
+            $('input[name=csrfmiddlewaretoken]').val(),
+            $('#arrive'),
+            $('#depart'),
+            $('#timer'),
+            $('#comment')
+        );
+    });
+});

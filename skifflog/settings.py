@@ -82,7 +82,7 @@ STATICFILES_STORAGE = 'require.storage.OptimizedCachedStaticFilesStorage'
 REQUIRE_BASE_URL = "javascripts"
 REQUIRE_BUILD_PROFILE = None
 REQUIRE_JS = "require.js"
-REQUIRE_DEBUG = False
+REQUIRE_DEBUG = DEBUG
 REQUIRE_STANDALONE_MODULES = {
     "main": {
         # Where to output the built module, relative to REQUIRE_BASE_URL.
