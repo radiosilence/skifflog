@@ -1,25 +1,69 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Dashboard</h1>
-    <p>This is the logged in user dashboard.</p>
-    {% if user.auth_token %}
-        <h2>API Token</h2>
-        <p>See <a href="http://django-rest-framework.org/api-guide/authentication.html#tokenauthentication">here</a> for more details.</p> 
-        <p>Token: <code>{{ user.auth_token.key }}</code></p>
-    {% endif %}
+
+    <div class="row">
+        <div class="three columns panel">
+            {% if visit %}
+                <p>
+                    <a class="button large alert" href="javascript:void(0)">I'm leaving now</a>
+                </p>
+                <label for="id_comment">Comment
+                </label>
+                <textarea id="id_comment"></textarea>
+                <div class="">You are currently at The Skiff, and have
+                    been since {{ visit.start }}
+                </div>
+
+            {% else %}
+                <a class="button large success" href="javascript:void(0)">I'm at The Skiff!</a>
+            {% endif %}
+        </div>
+        <div class="nine columns">
+            {% if visit %}
+                <h1 class="visit" start="{{ visit.start }}">--:--:--</h1>
+            {% else %}
+                <h1>Dashboard</h1>
+            {% endif %}
+            <p>You have used <strong>{{ month.total }}</strong> of <strong>{{ max_use }}</strong> this month</p>
+            <p><div class="progress twelve"><span class="meter" style="width: {{ month.percentage }}%"></span></div></p>
+            <h2>Log</h2>
+            <table style="width: 100%">
+                <thead>
+                    <th>Start</th>
+                    <th>Duration</th>
+                    <th>Comment</th>
+                </thead>
+                <tbody>
+                    {% if month.blocks|length > 0 %}
+                    {% for block in month.blocks %}
+                    <tr>
+                        <td>{{ block.start }}</td>
+                        <td>{{ block.duration }}</td>
+                        <td>{{ block.comment }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan=3>You haven't logged any time this month.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <h2>Settings</h2>
+            <div class="panel four columns">
+            <form method="post">
+                {{ profile_form.as_p }}
+                <input type="submit" class="button save" value="Save"/>
+            </form>
+            </div>
+            <div class="eight columns">
+                {% if user.auth_token %}
+                    <h4>API Token</h4>
+                    <p>See <a href="http://django-rest-framework.org/api-guide/authentication.html#tokenauthentication">here</a> for more details.</p> 
+                    <p>Token: <code>{{ user.auth_token.key }}</code></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     
-    <table>
-        <thead>
-            <th>Start</th>
-            <th>Duration</th>
-        </thead>
-        <tbody>
-            {% for block in blocks_this_month %}
-            <tr>
-                <td>{{ block.start }}</td>
-                <td>{{ block.duration }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 {% endblock %}

@@ -9,6 +9,15 @@ def month_range(today=None):
     delta = datetime.timedelta(days=days)
     return begin, begin + delta
 
-def blocks_this_month(user):
+def month_blocks(user):
     begin, end = month_range()
     return user.blocks.filter(start__range=(begin, end))
+
+def block_total(blocks):
+    return sum([block.duration for block in blocks], datetime.timedelta())
+
+def use_percentage(month_total, max_use):
+    return round(
+        (month_total.total_seconds() / max_use.total_seconds()) * 100,
+        0
+    )
