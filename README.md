@@ -21,7 +21,7 @@ of forgetting to "sign out".
 
 Screenshot
 ----------
-![Dashboard](http://files.blackflags.co.uk/screenshots/skifflog-dashboard.png)
+![Dashboard](https://raw.github.com/radiosilence/skifflog/master/skifflog/static/images/dashboard.png)
 
 
 Tools Used
