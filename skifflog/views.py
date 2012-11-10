@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from skifflog.forms import UserProfileForm
 from skifflog.models import Block
 from skifflog.serializers import BlockSerializer
-from skifflog.utils import month_blocks, block_total, use_percentage
+from skifflog.utils import block_total, use_percentage
 
 @api_view(['GET'])
 def home(request):
@@ -43,7 +43,9 @@ def arrive(request):
         visit = datetime.datetime.utcnow().replace(tzinfo=utc)
         profile.current_visit = visit
         profile.save()
-    return Response(visit)
+    return Response({
+        'visit': visit
+    })
 
 
 @api_view(['POST'])
@@ -97,9 +99,9 @@ def check(request):
 @login_required
 def dashboard(request):
     profile = request.user.profile
-    blocks = month_blocks(request.user)
-    month_total = block_total(blocks)
-    max_use = datetime.timedelta(days=2)
+    blocks = profile.month_blocks.order_by('-start')
+    month_total = profile.used_time
+    max_use = profile.max_use
     month_percentage = use_percentage(month_total, max_use)
     serializer = BlockSerializer(blocks)
     context = {

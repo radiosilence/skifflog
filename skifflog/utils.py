@@ -9,10 +9,6 @@ def month_range(today=None):
     delta = datetime.timedelta(days=days)
     return begin, begin + delta
 
-def month_blocks(user):
-    begin, end = month_range()
-    return user.blocks.filter(start__range=(begin, end))
-
 def block_total(blocks):
     return sum([block.duration for block in blocks], datetime.timedelta())
 
