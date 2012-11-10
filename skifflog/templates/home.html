@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <div class="row">
         <div class="twelve columns">
@@ -19,6 +20,9 @@
 
             <p>In future there will be the ability to delete or amend time slots in the case
             of forgetting to "sign out".</p>
+
+            <h2>Screenshot</h2>
+            <img src="{% static 'images/dashboard.png' %}" width="100%"/>
         </div>
     </div>
 {% endblock %}
