@@ -8,30 +8,24 @@ from rest_framework import generics
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.reverse import reverse
 from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from skifflog.forms import UserProfileForm
 from skifflog.models import Block
 from skifflog.serializers import BlockSerializer
 from skifflog.utils import block_total, use_percentage
 
+
 @api_view(['GET'])
+@renderer_classes((TemplateHTMLRenderer,))
 def home(request):
     if request.user.is_active:
         return redirect('dashboard')
     return Response({}, template_name='home.html')
 
+
 def profile(request):
     return redirect('dashboard')
-
-
-@api_view(['GET', 'POST'])
-@login_required
-def debug(request):
-    return Response({
-        'user': repr(request.user),
-        'session': repr(request.session),
-        'visit': repr(request.session.get('visit', None))
-    })
 
 
 @api_view(['POST'])
@@ -96,6 +90,7 @@ def check(request):
 
 
 @api_view(['GET', 'POST'])
+@renderer_classes((TemplateHTMLRenderer,))
 @login_required
 def dashboard(request):
     profile = request.user.profile
