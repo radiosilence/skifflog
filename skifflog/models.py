@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 import timedelta
 from model_utils import Choices
 from skifflog.utils import month_range
@@ -32,6 +33,14 @@ class UserProfile(models.Model):
         verbose_name='How much you want to round up time, contributed to total, so'
             + ' as not to take the metaphorical piss (in hours)')
     current_visit = models.DateTimeField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        super(UserProfile, self).save(*args, **kwargs)
+        try:
+            token = self.user.auth_token
+        except Token.DoesNotExist:
+            token = Token.objects.create(user=self.user)
+            token.save()
 
     @property
     def month_blocks(self):
